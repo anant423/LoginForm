@@ -14,7 +14,11 @@ const ValidatedLoginForm = () => (
     validationSchema={Yup.object().shape({
       Username: Yup.string()
         .min(3, "Username is too short - should be 3 chars minimum.")
-        .required("Required"),
+        .required("Required")
+        .matches(
+          /^[a-zA-Z0-9_]+$/,
+          "Username can only contain alphanumeric characters and underscore(_)"
+        ),
       Password: Yup.string()
         .required("No password provided.")
         .min(8, "Password is too short - should be 8 chars minimum.")
